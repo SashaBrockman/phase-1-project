@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+ 	<head>
+ 		<link rel="stylesheet" href="./style.css">
+  		<title>Monster Tracker</title>
+	</head>
+	<body>
+		<div class="top-bar">
+            Header1, "D&D 5e Monster Tracker"
+            <h1>D&D 5e Monster Tracker</h1>
+		    Input, "Enter a monster's name...", text type, "" value
+		    <input
+            type="text"
+            value=""
+            placeholder="Enter a monster's name..."
+            class="search-text"
+            />
+            <br/>
+            Input, "Search", submit type
+		    <input
+            type="submit"
+            value="Search"
+            class="submit"
+            />
+        </div>
+        <div id="search-results">
+            <h2>"Search Results"</h2>
+        </div>
+        Header2, "Search Results"
+		
+        Div, ID: search-results
+		<div id="active-monsters">
+            <h2>Active Monsters</h2>
+        </div>
+        Header2, "Active Monsters"
+		
+        Div, ID: active-monsters
+		
+        <script type="text/javascript" src="src/index.js"></script>
+	</body>
+</html>
