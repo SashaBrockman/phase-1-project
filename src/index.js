@@ -45,6 +45,7 @@ function createList(results){
         const div = document.createElement('div')
         const p = document.createElement('p')
         const table = document.createElement('table')
+	table.hidden = true
 	fetch(`https://www.dnd5eapi.co/api/monsters/$(monster)`)
         .then(res => res.json())
         .then(stats => {
@@ -58,7 +59,20 @@ function createList(results){
 	    const wis = row.insertCell(-1)
 	    const cha = row.insertCell(-1)
 	    const int = row.insertCell(-1)
+	    hp.innerHTML = stats.hit_points
+	    ac.innerHTML = stats.armor_class
+	    str.innerHTML = stats.strength
+	    dex.innerHTML = stats.dexterity
+	    con.innerHTML = stats.constitution
+	    wis.innerHTML = stats.wisdom
+	    cha.innerHTML = stats.charisma
+	    int.innerHTML = stats.intelligence
 	})
+	div.appendChild(p)
+	div.appendChild(table)
+	div.addEventListener("mouseover", () => table.hidden = false)
+	div.addEventListener("mouseout", () => table.hidden = true)
+	document.querySelector(".results-list").appendChild(div)
     })
 }
 
