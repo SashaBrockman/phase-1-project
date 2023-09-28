@@ -22,6 +22,12 @@ function Search (results)
 	)
  */
 
+function handleForm(name){
+    document.querySelector('#results-list').innerHTML = '';
+    fetch(`https://www.dnd5eapi.co/api/monsters`)
+    .then(res => res.json())
+    .then(monsters => monsters.results.forEach(monster => search(monster)))
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const searchBar = document.querySelector(".search-form")
