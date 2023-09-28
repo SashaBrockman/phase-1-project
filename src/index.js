@@ -40,6 +40,28 @@ function searchMonsters(monsters, name){
     return results
 }
 
+function createList(results){
+    results.forEach(monster =>{
+        const div = document.createElement('div')
+        const p = document.createElement('p')
+        const table = document.createElement('table')
+	fetch(`https://www.dnd5eapi.co/api/monsters/$(monster)`)
+        .then(res => res.json())
+        .then(stats => {
+	    p.innerHTML = stats.name
+	    const row = table.insertRow(0)
+	    const hp = row.insertCell(-1)
+	    const ac = row.insertCell(-1)
+	    const str = row.insertCell(-1)
+	    const dex = row.insertCell(-1)
+	    const con = row.insertCell(-1)
+	    const wis = row.insertCell(-1)
+	    const cha = row.insertCell(-1)
+	    const int = row.insertCell(-1)
+	})
+    })
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const searchBar = document.querySelector(".search-form")
     searchBar.addEventListener("submit", e => handleForm(e))
