@@ -26,7 +26,18 @@ function handleForm(name){
     document.querySelector('#results-list').innerHTML = '';
     fetch(`https://www.dnd5eapi.co/api/monsters`)
     .then(res => res.json())
-    .then(monsters => monsters.results.forEach(monster => search(monster)))
+    .then(monsters => search(monster.results, name))
+    .then(results => createList(results))
+}
+
+function search(monsters, name){
+    const results = []
+    monsters.forEach(monster => {
+        if(monster.name.toLowerCase().includes(name.toLowerCase()){
+	    results.push(monster.index)
+	}
+    }
+    return results
 }
 
 document.addEventListener("DOMContentLoaded", () => {
