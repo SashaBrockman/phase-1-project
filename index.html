@@ -5,7 +5,7 @@
   		<title>Monster Tracker</title>
 	</head>
 	<body>
-		<div class="top-bar">
+		<form class="search-form">
             <h1>D&D 5e Monster Tracker</h1>
 		    <input
             type="text"
@@ -19,12 +19,20 @@
             value="Search"
             class="submit"
             />
-        </div>
-        <div id="search-results">
+        </form>
+        <div class="search-results">
             <h2>Search Results</h2>
+            <br/>
+            <button class="clear-button" id="clear-results">Clear results</button>
+            <br/>
+            <ol class="results-list"></ol>
         </div>
-		<div id="active-monsters">
+		<div class="active-monsters">
             <h2>Active Monsters</h2>
+            <br/>
+            <button class="clear-button" id="clear-active">Clear monsters</button>
+            <br/>
+            <ol class="active-list"></ol>
         </div>
 		
         <script type="text/javascript" src="src/index.js"></script>
