@@ -22,3 +22,11 @@ function Search (results)
 	)
  */
 
+document.addEventListener("DOMContentLoaded", () => {
+    const searchBar = document.querySelector(".search-form")
+    searchBar.addEventListener(submit, e =>{
+
+    })
+    const results = document.querySelector("#results-button")
+    results.addEventListener
+} )
