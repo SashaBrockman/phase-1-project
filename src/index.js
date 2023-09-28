@@ -22,11 +22,12 @@ function Search (results)
 	)
  */
 
+
 document.addEventListener("DOMContentLoaded", () => {
     const searchBar = document.querySelector(".search-form")
-    searchBar.addEventListener(submit, e =>{
-
-    })
+    searchBar.addEventListener("submit", e => handleForm(e))
     const results = document.querySelector("#results-button")
-    results.addEventListener
+    results.addEventListener("click", e => clear(e))
+    const active = document.querySelector("#clear-active")
+    active.addEventListener("click", e => clear(e))
 } )
