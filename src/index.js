@@ -26,11 +26,11 @@ function handleForm(name){
     document.querySelector('#results-list').innerHTML = '';
     fetch(`https://www.dnd5eapi.co/api/monsters`)
     .then(res => res.json())
-    .then(monsters => search(monster.results, name))
+    .then(monsters => searchMonsters(monster.results, name))
     .then(results => createList(results))
 }
 
-function search(monsters, name){
+function searchMonsters(monsters, name){
     const results = []
     monsters.forEach(monster => {
         if(monster.name.toLowerCase().includes(name.toLowerCase()){
