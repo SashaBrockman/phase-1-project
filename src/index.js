@@ -23,50 +23,57 @@ function Search (results)
  */
 
 function handleForm(name){
-    document.querySelector('#results-list').innerHTML = '';
+    debugger
+    document.querySelector('.results-list').innerHTML = '';
     fetch(`https://www.dnd5eapi.co/api/monsters`)
-    .then(res => res.json())
-    .then(monsters => searchMonsters(monster.results, name))
+    .then(res => {
+        const resp = res.json()
+        console.log(resp)
+    })
+    .then(monsters => searchMonsters(monsters.results, name))
     .then(results => createList(results))
 }
 
 function searchMonsters(monsters, name){
+    debugger
     const results = []
     monsters.forEach(monster => {
-        if(monster.name.toLowerCase().includes(name.toLowerCase()){
-	    results.push(monster.index)
-	}
-    }
+        if(monster.name.toLowerCase().includes(name.toLowerCase())){
+	        results.push(monster.index)
+	    }
+    })
     return results
 }
 
 function createList(results){
+    debugger
     results.forEach(monster =>{
         const div = document.createElement('div')
         const p = document.createElement('p')
         const table = document.createElement('table')
 	table.hidden = true
-	fetch(`https://www.dnd5eapi.co/api/monsters/$(monster)`)
+	fetch(`https://www.dnd5eapi.co/api/monsters/${monster}`)
         .then(res => res.json())
         .then(stats => {
-	    p.innerHTML = stats.name
-	    const row = table.insertRow(0)
-	    const hp = row.insertCell(-1)
-	    const ac = row.insertCell(-1)
-	    const str = row.insertCell(-1)
-	    const dex = row.insertCell(-1)
-	    const con = row.insertCell(-1)
-	    const wis = row.insertCell(-1)
-	    const cha = row.insertCell(-1)
-	    const int = row.insertCell(-1)
-	    hp.innerHTML = stats.hit_points
-	    ac.innerHTML = stats.armor_class
-	    str.innerHTML = stats.strength
-	    dex.innerHTML = stats.dexterity
-	    con.innerHTML = stats.constitution
-	    wis.innerHTML = stats.wisdom
-	    cha.innerHTML = stats.charisma
-	    int.innerHTML = stats.intelligence
+            debugger
+	        p.innerHTML = stats.name
+	        const row = table.insertRow(0)
+	        const hp = row.insertCell(-1)
+	        const ac = row.insertCell(-1)
+	        const str = row.insertCell(-1)
+	        const dex = row.insertCell(-1)
+	        const con = row.insertCell(-1)
+	        const wis = row.insertCell(-1)
+	        const cha = row.insertCell(-1)
+	        const int = row.insertCell(-1)
+	        hp.innerHTML = stats.hit_points
+	        ac.innerHTML = stats.armor_class
+	        str.innerHTML = stats.strength
+	        dex.innerHTML = stats.dexterity
+	        con.innerHTML = stats.constitution
+	        wis.innerHTML = stats.wisdom
+	        cha.innerHTML = stats.charisma
+	        int.innerHTML = stats.intelligence
 	})
 	div.appendChild(p)
 	div.appendChild(table)
@@ -78,8 +85,12 @@ function createList(results){
 
 document.addEventListener("DOMContentLoaded", () => {
     const searchBar = document.querySelector(".search-form")
-    searchBar.addEventListener("submit", e => handleForm(e))
-    const results = document.querySelector("#results-button")
+    searchBar.addEventListener("submit", e => {
+        e.preventDefault
+        debugger
+        handleForm(e.target[0].value)
+    })
+    const results = document.querySelector("#clear-results")
     results.addEventListener("click", e => clear(e))
     const active = document.querySelector("#clear-active")
     active.addEventListener("click", e => clear(e))
