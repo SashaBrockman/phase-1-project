@@ -83,6 +83,36 @@ function createList(results){
     })
 }
 
+function createStatBlock(activeMonster){
+	const div = document.createElement('div')
+        const table = document.createElement('table')
+	fetch(`https://www.dnd5eapi.co/api/monsters/${monster}`)
+        .then(res => res.json())
+        .then(stats => {
+            debugger
+		const name = table.insertRow(0)
+		const type = table.insertRow(-1)
+		const sizeTypeAlign = type.insertCell(-1)
+	        const sixStats = table.insertRow(-1)
+	        const hp = sixStats.insertCell(-1)
+	        const ac = sixStats.insertCell(-1)
+	        const str = sixStats.insertCell(-1)
+	        const dex = sixStats.insertCell(-1)
+	        const con = sixStats.insertCell(-1)
+	        const wis = sixStats.insertCell(-1)
+	        const cha = sixStats.insertCell(-1)
+	        const int = sixStats.insertCell(-1)
+	        hp.innerHTML = stats.hit_points
+	        ac.innerHTML = stats.armor_class
+	        str.innerHTML = stats.strength
+	        dex.innerHTML = stats.dexterity
+	        con.innerHTML = stats.constitution
+	        wis.innerHTML = stats.wisdom
+	        cha.innerHTML = stats.charisma
+	        int.innerHTML = stats.intelligence
+	})
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const searchBar = document.querySelector(".search-form")
     searchBar.addEventListener("submit", e => {
