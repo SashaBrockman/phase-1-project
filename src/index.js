@@ -84,11 +84,11 @@ function createList(results){
 }
 
 function createStatBlock(activeMonster){
-	const div = document.createElement('div')
 	fetch(`https://www.dnd5eapi.co/api/monsters/${monster}`)
         .then(res => res.json())
         .then(stats => {
             debugger
+		const div = document.createElement('div')
 		const titleDiv = document.createElement('div')
 		const name = document.createElement('p')
 		const sizeTypeAlign = document.createElement('p')
@@ -107,10 +107,10 @@ function createStatBlock(activeMonster){
 		const vulns = document.createElement('p')
 		const resists = document.createElement('p')
 		const immuns = document.createElement('p')
-		const conImmun = document.createElement('p')
-		const senses = document.createElement('p')
+		const conImmuns = document.createElement('p')
 		const langs = document.createElement('p')
 		const chall = document.createElement('p')
+		
 		name.innerHTML = stats.name
 		sizeTypeAlign.innerHTML = `${stats.size} ${stats.type}, `
 	        hp.innerHTML = 'Hit points: ' + stats.hit_points
@@ -121,7 +121,36 @@ function createStatBlock(activeMonster){
 	        wis.innerHTML = 'WIS: ' + stats.wisdom
 	        cha.innerHTML = 'CHA: ' + stats.charisma
 	        int.innerHTML = 'INT: ' + stats.intelligence
-		profs.innerHTML = 'Proficiencies: ' + stats.prof
+		profs.innerHTML = 'Proficiencies: ' + stats.profificiencies.forEach(prof => profs.innerHTML.concat(', ', `${prof.proficiency.name} ${prof.value}`))
+		vulns.innerHTML = 'Vulnerabilities: ' + stats.damage_vulnerabilities.forEach(vuln => vulns.innerHTML.concat(', ', vuln))
+		resists.innerHTML = 'Resistances: ' + stats.damage_resistances.forEach(resist => resists.innerHTML.concat(', ', resist))
+		immuns.innerHTML = 'Immunities: ' + stats.damage_immunities.forEach(immun => immuns.innerHTML.concat(', ', immun))
+		conImmuns.innerHTML = 'Condition Immunities: ' + stats.condition_immunities.forEach(conImmun => conImmuns.innerHTML.concat(', ', conImmun))
+		langs.innerHTML = 'Languages: ' + stats.languages
+		chall.innerHTML = 'CR: ' + stats.challenge_rating + ` (${stats.xp} XP)`
+
+		titleDiv.appendChild(name)
+		titleDiv.appendChild(sizeTypeAlign)
+		physicalDiv.appendChild(hp)
+		physicalDiv.appendChild(ac)
+		statDiv.appendChild(str)
+		statDiv.appendChild(dex)
+		statDiv.appendChild(con)
+		statDiv.appendChild(wis)
+		statDiv.appendChild(cha)
+		statDiv.appendChild(int)
+		infoDiv.appendChild(profs)
+		infoDiv.appendChild(vulns)
+		infoDiv.appendChild(resists)
+		infoDiv.appendChild(immuns)
+		infoDiv.appendChild(conImmuns)
+		infoDiv.appendChild(langs)
+		infoDiv.appendChild(chall)
+		div.appendChild(titleDiv)
+		div.appendChild(physicalDiv)
+		div.appendChild(statDiv)
+		div.appendChild(infoDiv)
+		document.querySelector('.active-list').appendChild(div)
 	})
 }
 
