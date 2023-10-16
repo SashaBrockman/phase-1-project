@@ -121,6 +121,7 @@ function createStatBlock(activeMonster){
 	        wis.innerHTML = 'WIS: ' + stats.wisdom
 	        cha.innerHTML = 'CHA: ' + stats.charisma
 	        int.innerHTML = 'INT: ' + stats.intelligence
+		profs.innerHTML = 'Proficiencies: ' + stats.prof
 	})
 }
 
