@@ -85,25 +85,34 @@ function createList(results){
 
 function createStatBlock(activeMonster){
 	const div = document.createElement('div')
-        const table = document.createElement('table')
 	fetch(`https://www.dnd5eapi.co/api/monsters/${monster}`)
         .then(res => res.json())
         .then(stats => {
             debugger
-		const name = table.insertRow(0)
-		const type = table.insertRow(-1)
-		const sizeTypeAlign = type.insertCell(-1)
-	        const sixStats = table.insertRow(-1)
-	        const hp = sixStats.insertCell(-1)
-	        const ac = sixStats.insertCell(-1)
-	        const str = sixStats.insertCell(-1)
-	        const dex = sixStats.insertCell(-1)
-	        const con = sixStats.insertCell(-1)
-	        const wis = sixStats.insertCell(-1)
-	        const cha = sixStats.insertCell(-1)
-	        const int = sixStats.insertCell(-1)
-	        hp.innerHTML = stats.hit_points
-	        ac.innerHTML = stats.armor_class
+		const titleDiv = document.createElement('div')
+		const name = document.createElement('p')
+		const sizeTypeAlign = document.createElement('p')
+		const physicalDiv = document.createElement('div')
+		const hp = document.createElement('p')
+	        const ac = document.createElement('p')
+		const statDiv = document.createElement('div')
+	        const str = document.createElement('p')
+	        const dex = document.createElement('p')
+	        const con = document.createElement('p')
+	        const wis = document.createElement('p')
+	        const cha = document.createElement('p')
+	        const int = document.createElement('p')
+		const infoDiv = document.createElement('div')
+		const profs = document.createElement('p')
+		const vulns = document.createElement('p')
+		const resists = document.createElement('p')
+		const immuns = document.createElement('p')
+		const conImmun = document.createElement('p')
+		const senses = document.createElement('p')
+		const langs = document.createElement('p')
+		const chall = document.createElement('p')
+	        hp.innerHTML = 'Hit points: ' + stats.hit_points
+	        ac.innerHTML = 'Armor Class: ' + stats.armor_class
 	        str.innerHTML = stats.strength
 	        dex.innerHTML = stats.dexterity
 	        con.innerHTML = stats.constitution
