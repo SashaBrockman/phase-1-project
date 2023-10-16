@@ -111,14 +111,16 @@ function createStatBlock(activeMonster){
 		const senses = document.createElement('p')
 		const langs = document.createElement('p')
 		const chall = document.createElement('p')
+		name.innerHTML = stats.name
+		sizeTypeAlign.innerHTML = `${stats.size} ${stats.type}, `
 	        hp.innerHTML = 'Hit points: ' + stats.hit_points
 	        ac.innerHTML = 'Armor Class: ' + stats.armor_class
-	        str.innerHTML = stats.strength
-	        dex.innerHTML = stats.dexterity
-	        con.innerHTML = stats.constitution
-	        wis.innerHTML = stats.wisdom
-	        cha.innerHTML = stats.charisma
-	        int.innerHTML = stats.intelligence
+	        str.innerHTML = 'STR: ' + stats.strength
+	        dex.innerHTML = 'DEX: ' + stats.dexterity
+	        con.innerHTML = 'CON: ' + stats.constitution
+	        wis.innerHTML = 'WIS: ' + stats.wisdom
+	        cha.innerHTML = 'CHA: ' + stats.charisma
+	        int.innerHTML = 'INT: ' + stats.intelligence
 	})
 }
 
