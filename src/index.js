@@ -59,27 +59,30 @@ function createList(results){
 	        const wis = row.insertCell(-1)
 	        const cha = row.insertCell(-1)
 	        const int = row.insertCell(-1)
-	        hp.innerHTML = stats.hit_points
-	        ac.innerHTML = stats.armor_class
-	        str.innerHTML = stats.strength
-	        dex.innerHTML = stats.dexterity
-	        con.innerHTML = stats.constitution
-	        wis.innerHTML = stats.wisdom
-	        cha.innerHTML = stats.charisma
-	        int.innerHTML = stats.intelligence
+	        hp.innerHTML = "HP: " + stats.hit_points
+	        ac.innerHTML = "AC: " + stats.armor_class[0].value
+	        str.innerHTML = "STR: " + stats.strength
+	        dex.innerHTML = "DEX: " + stats.dexterity
+	        con.innerHTML = "CON: " + stats.constitution
+	        wis.innerHTML = "WIS: " + stats.wisdom
+	        cha.innerHTML = "CHA: " + stats.charisma
+	        int.innerHTML = "INT: " + stats.intelligence
 	})
 	div.appendChild(p)
 	div.appendChild(table)
 	div.addEventListener("mouseover", () => table.hidden = false)
 	div.addEventListener("mouseout", () => table.hidden = true)
+	div.addEventListener("click", e => createStatBlock(e.target.innerHTML.toLowerCase()))
 	document.querySelector(".results-list").appendChild(div)
     })
 }
 
 function createStatBlock(activeMonster){
-	fetch(`https://www.dnd5eapi.co/api/monsters/${monster}`)
+	console.log(activeMonster)
+	fetch(`https://www.dnd5eapi.co/api/monsters/${activeMonster.replace(" ","-")}`)
         .then(res => res.json())
         .then(stats => {
+			console.log(stats)
 		const div = document.createElement('div')
 		const titleDiv = document.createElement('div')
 		const name = document.createElement('p')
@@ -106,14 +109,14 @@ function createStatBlock(activeMonster){
 		name.innerHTML = stats.name
 		sizeTypeAlign.innerHTML = `${stats.size} ${stats.type}, `
 	        hp.innerHTML = 'Hit points: ' + stats.hit_points
-	        ac.innerHTML = 'Armor Class: ' + stats.armor_class
+	        ac.innerHTML = 'Armor Class: ' + stats.armor_class[0].value
 	        str.innerHTML = 'STR: ' + stats.strength
 	        dex.innerHTML = 'DEX: ' + stats.dexterity
 	        con.innerHTML = 'CON: ' + stats.constitution
 	        wis.innerHTML = 'WIS: ' + stats.wisdom
 	        cha.innerHTML = 'CHA: ' + stats.charisma
 	        int.innerHTML = 'INT: ' + stats.intelligence
-		profs.innerHTML = 'Proficiencies: ' + stats.profificiencies.forEach(prof => profs.innerHTML.concat(', ', `${prof.proficiency.name} ${prof.value}`))
+		profs.innerHTML = 'Proficiencies: ' + stats.proficiencies.forEach(prof => profs.innerHTML.concat(', ', `${prof.proficiency.name} ${prof.value}`))
 		vulns.innerHTML = 'Vulnerabilities: ' + stats.damage_vulnerabilities.forEach(vuln => vulns.innerHTML.concat(', ', vuln))
 		resists.innerHTML = 'Resistances: ' + stats.damage_resistances.forEach(resist => resists.innerHTML.concat(', ', resist))
 		immuns.innerHTML = 'Immunities: ' + stats.damage_immunities.forEach(immun => immuns.innerHTML.concat(', ', immun))
