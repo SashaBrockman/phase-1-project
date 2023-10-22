@@ -23,19 +23,14 @@ function Search (results)
  */
 
 function handleForm(name){
-    debugger
     document.querySelector('.results-list').innerHTML = '';
     fetch(`https://www.dnd5eapi.co/api/monsters`)
-    .then(res => {
-        const resp = res.json()
-        console.log(resp)
-    })
+    .then(res => res.json())
     .then(monsters => searchMonsters(monsters.results, name))
     .then(results => createList(results))
 }
 
 function searchMonsters(monsters, name){
-    debugger
     const results = []
     monsters.forEach(monster => {
         if(monster.name.toLowerCase().includes(name.toLowerCase())){
@@ -46,7 +41,6 @@ function searchMonsters(monsters, name){
 }
 
 function createList(results){
-    debugger
     results.forEach(monster =>{
         const div = document.createElement('div')
         const p = document.createElement('p')
@@ -55,7 +49,6 @@ function createList(results){
 	fetch(`https://www.dnd5eapi.co/api/monsters/${monster}`)
         .then(res => res.json())
         .then(stats => {
-            debugger
 	        p.innerHTML = stats.name
 	        const row = table.insertRow(0)
 	        const hp = row.insertCell(-1)
@@ -87,21 +80,20 @@ function createStatBlock(activeMonster){
 	fetch(`https://www.dnd5eapi.co/api/monsters/${monster}`)
         .then(res => res.json())
         .then(stats => {
-            debugger
 		const div = document.createElement('div')
 		const titleDiv = document.createElement('div')
 		const name = document.createElement('p')
 		const sizeTypeAlign = document.createElement('p')
 		const physicalDiv = document.createElement('div')
 		const hp = document.createElement('p')
-	        const ac = document.createElement('p')
+	    const ac = document.createElement('p')
 		const statDiv = document.createElement('div')
-	        const str = document.createElement('p')
-	        const dex = document.createElement('p')
-	        const con = document.createElement('p')
-	        const wis = document.createElement('p')
-	        const cha = document.createElement('p')
-	        const int = document.createElement('p')
+	    const str = document.createElement('p')
+	    const dex = document.createElement('p')
+	    const con = document.createElement('p')
+	    const wis = document.createElement('p')
+	    const cha = document.createElement('p')
+	    const int = document.createElement('p')
 		const infoDiv = document.createElement('div')
 		const profs = document.createElement('p')
 		const vulns = document.createElement('p')
@@ -157,8 +149,7 @@ function createStatBlock(activeMonster){
 document.addEventListener("DOMContentLoaded", () => {
     const searchBar = document.querySelector(".search-form")
     searchBar.addEventListener("submit", e => {
-        e.preventDefault
-        debugger
+        e.preventDefault()
         handleForm(e.target[0].value)
     })
     const results = document.querySelector("#clear-results")
