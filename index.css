@@ -39,3 +39,8 @@ body {
     padding-top: 5%;
     float: right;
 }
+
+.results-list {
+    float: left;
+    padding-top: 5%;
+}
