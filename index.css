@@ -29,5 +29,13 @@ body {
 
 .clear-button {
     float: right;
-    height: 5%;
+}
+
+.title {
+    float: left;
+}
+
+.button {
+    padding-top: 5%;
+    float: right;
 }
