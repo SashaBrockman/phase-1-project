@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #d69d60;
+}
+
+.header {
+    color: #000;
+}
+
+.search-form {
+    text-align: center;
+    background: #a67a4c;
+    height: 7rem;
+    padding: 1rem;
+}
+
+.search-results {
+    width: 45%;
+    float: left;
+    padding-left: 2.5%;
+}
+
+.active-monsters {
+    width: 45%;
+    float: right;
+    padding-right: 2.5%;
+}
+
+.clear-button {
+    float: right;
+    height: 5%;
+}
