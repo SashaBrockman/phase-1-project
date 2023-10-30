@@ -79,7 +79,7 @@ function createList(results){
 
 function createStatBlock(activeMonster){
 	console.log(activeMonster)
-	fetch(`https://www.dnd5eapi.co/api/monsters/${activeMonster.replace(" ","-")}`)
+	fetch(`https://www.dnd5eapi.co/api/monsters/${activeMonster.replaceAll(" ","-")}`)
         .then(res => res.json())
         .then(stats => {
 			console.log(stats)
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
         handleForm(e.target[0].value)
     })
     const results = document.querySelector("#clear-results")
-    results.addEventListener("click", e => clear(e))
+    results.addEventListener("click", () => document.querySelector(".results-list").innerHTML = "")
     const active = document.querySelector("#clear-active")
-    active.addEventListener("click", e => clear(e))
+    active.addEventListener("click", () => document.querySelector(".active-list").innerHTML = "")
 } )
