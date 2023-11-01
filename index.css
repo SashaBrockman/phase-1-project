@@ -33,6 +33,7 @@ body {
 
 .title {
     float: left;
+    padding-bottom: 5%;
 }
 
 .button {
@@ -43,4 +44,12 @@ body {
 .results-list {
     float: left;
     padding-top: 5%;
+}
+
+.active {
+    background-color: darksalmon;
+    border-color: #000;
+    border-width: 5px;
+    border-style: solid;
+    margin: 7%;
 }

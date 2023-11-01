@@ -46,9 +46,10 @@ function createList(results){
 	})
 	div.appendChild(p)
 	div.appendChild(table)
+	div.setAttribute("class", "result")
 	div.addEventListener("mouseover", () => table.hidden = false)
 	div.addEventListener("mouseout", () => table.hidden = true)
-	div.addEventListener("click", e => createStatBlock(e.target.innerHTML.toLowerCase()))
+	p.addEventListener("click", e => createStatBlock(e.target.innerHTML.toLowerCase()))
 	document.querySelector(".results-list").appendChild(div)
     })
 }
@@ -131,6 +132,7 @@ function createStatBlock(activeMonster){
 		div.appendChild(physicalDiv)
 		div.appendChild(statDiv)
 		div.appendChild(infoDiv)
+		div.setAttribute("class", "active")
 		document.querySelector('.active-list').appendChild(div)
 	})
 }
