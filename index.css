@@ -19,12 +19,18 @@ body {
     width: 45%;
     float: left;
     padding-left: 2.5%;
+    display: grid;
 }
 
 .active-monsters {
     width: 45%;
     float: right;
     padding-right: 2.5%;
+    display: grid;
+}
+
+.active-list {
+    grid-row-start: 2;
 }
 
 .clear-button {
@@ -34,16 +40,29 @@ body {
 .title {
     float: left;
     padding-bottom: 5%;
+    grid-row-start: 1;
+    grid-column-start: 1;
 }
 
 .button {
     padding-top: 5%;
     float: right;
+    grid-column-start: 2;
 }
 
 .results-list {
     float: left;
     padding-top: 5%;
+    grid-row-start: 2;
+}
+
+#search-title {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+#search-button {
+    grid-column-start: 2;
 }
 
 .active {

@@ -19,7 +19,7 @@ function searchMonsters(monsters, name){
 function createList(results){
     results.forEach(monster =>{
         const div = document.createElement('div')
-        const p = document.createElement('p')
+        const p = document.createElement('h3')
         const table = document.createElement('table')
 	table.hidden = true
 	fetch(`https://www.dnd5eapi.co/api/monsters/${monster}`)
@@ -62,7 +62,7 @@ function createStatBlock(activeMonster){
 			console.log(stats)
 		const div = document.createElement('div')
 		const titleDiv = document.createElement('div')
-		const name = document.createElement('p')
+		const name = document.createElement('h3')
 		const sizeTypeAlign = document.createElement('p')
 		const physicalDiv = document.createElement('div')
 		const hp = document.createElement('p')
@@ -94,6 +94,7 @@ function createStatBlock(activeMonster){
 	        cha.innerHTML = 'CHA: ' + stats.charisma
 	        int.innerHTML = 'INT: ' + stats.intelligence
 		if(typeof stats.proficiencies[0] !== "undefined"){
+			debugger
 			profs.innerHTML = 'Proficiencies: ' + stats.proficiencies.forEach(prof => profs.innerHTML.concat(', ', `${prof.proficiency.name} ${prof.value}`))
 		}
 		if(typeof stats.damage_vulnerabilities[0] !== "undefined"){
