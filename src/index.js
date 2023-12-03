@@ -93,21 +93,26 @@ function createStatBlock(activeMonster){
 	        wis.innerHTML = 'WIS: ' + stats.wisdom
 	        cha.innerHTML = 'CHA: ' + stats.charisma
 	        int.innerHTML = 'INT: ' + stats.intelligence
-		if(typeof stats.proficiencies[0] !== "undefined"){
 			debugger
-			profs.innerHTML = 'Proficiencies: ' + stats.proficiencies.forEach(prof => profs.innerHTML.concat(', ', `${prof.proficiency.name} ${prof.value}`))
+		if(typeof stats.proficiencies[0] !== "undefined"){
+			profs.innerHTML = 'Proficiencies: '
+			stats.proficiencies.forEach(prof => profs.innerHTML = profs.innerHTML.concat(', ', `${prof.proficiency.name}: ${prof.value}`))
 		}
 		if(typeof stats.damage_vulnerabilities[0] !== "undefined"){
-			vulns.innerHTML = 'Vulnerabilities: ' + stats.damage_vulnerabilities.forEach(vuln => vulns.innerHTML.concat(', ', vuln))
+			vulns.innerHTML = 'Vulnerabilities: '
+			stats.damage_vulnerabilities.forEach(vuln => vulns.innerHTML = vulns.innerHTML.concat(', ', vuln))
 		}
 		if(typeof stats.damage_resistances[0] !== "undefined"){
-			resists.innerHTML = 'Resistances: ' + stats.damage_resistances.forEach(resist => resists.innerHTML.concat(', ', resist))
+			resists.innerHTML = 'Resistances: '
+			stats.damage_resistances.forEach(resist => resists.innerHTML = resists.innerHTML.concat(', ', resist))
 		}
 		if(typeof stats.damage_immunities[0] !== "undefined"){
-			immuns.innerHTML = 'Immunities: ' + stats.damage_immunities.forEach(immun => immuns.innerHTML.concat(', ', immun))
+			immuns.innerHTML = 'Immunities: '
+			stats.damage_immunities.forEach(immun => immuns.innerHTML = immuns.innerHTML.concat(', ', immun))
 		}
 		if(typeof stats.condition_immunities[0] !== "undefined"){
-			conImmuns.innerHTML = 'Condition Immunities: ' + stats.condition_immunities.forEach(conImmun => conImmuns.innerHTML.concat(', ', conImmun))
+			conImmuns.innerHTML = 'Condition Immunities: '
+			stats.condition_immunities.forEach(conImmun => conImmuns.innerHTML = conImmuns.innerHTML.concat(', ', conImmun))
 		}
 		langs.innerHTML = 'Languages: ' + stats.languages
 		chall.innerHTML = 'CR: ' + stats.challenge_rating + ` (${stats.xp} XP)`
