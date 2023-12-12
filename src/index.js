@@ -96,23 +96,23 @@ function createStatBlock(activeMonster){
 			debugger
 		if(typeof stats.proficiencies[0] !== "undefined"){
 			profs.innerHTML = 'Proficiencies: '
-			stats.proficiencies.forEach(prof => profs.innerHTML = profs.innerHTML.concat(', ', `${prof.proficiency.name}: ${prof.value}`))
+			stats.proficiencies.forEach(prof => profs.innerHTML = profs.innerHTML.concat(`${prof.proficiency.name}: ${prof.value}`, ', '))
 		}
 		if(typeof stats.damage_vulnerabilities[0] !== "undefined"){
 			vulns.innerHTML = 'Vulnerabilities: '
-			stats.damage_vulnerabilities.forEach(vuln => vulns.innerHTML = vulns.innerHTML.concat(', ', vuln))
+			stats.damage_vulnerabilities.forEach(vuln => vulns.innerHTML = vulns.innerHTML.concat(vuln, ', '))
 		}
 		if(typeof stats.damage_resistances[0] !== "undefined"){
 			resists.innerHTML = 'Resistances: '
-			stats.damage_resistances.forEach(resist => resists.innerHTML = resists.innerHTML.concat(', ', resist))
+			stats.damage_resistances.forEach(resist => resists.innerHTML = resists.innerHTML.concat(resist, ', '))
 		}
 		if(typeof stats.damage_immunities[0] !== "undefined"){
 			immuns.innerHTML = 'Immunities: '
-			stats.damage_immunities.forEach(immun => immuns.innerHTML = immuns.innerHTML.concat(', ', immun))
+			stats.damage_immunities.forEach(immun => immuns.innerHTML = immuns.innerHTML.concat(immun, ', '))
 		}
 		if(typeof stats.condition_immunities[0] !== "undefined"){
 			conImmuns.innerHTML = 'Condition Immunities: '
-			stats.condition_immunities.forEach(conImmun => conImmuns.innerHTML = conImmuns.innerHTML.concat(', ', conImmun))
+			stats.condition_immunities.forEach(conImmun => conImmuns.innerHTML = conImmuns.innerHTML.concat(conImmun.name, ', '))
 		}
 		langs.innerHTML = 'Languages: ' + stats.languages
 		chall.innerHTML = 'CR: ' + stats.challenge_rating + ` (${stats.xp} XP)`
